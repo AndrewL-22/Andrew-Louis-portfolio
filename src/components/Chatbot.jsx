@@ -64,7 +64,7 @@ export const Chatbot = () => {
 
       {isOpen && (
         <div
-          className="fixed bottom-20 right-5 z-50 w-80 max-w-sm glass-panel flex flex-col"
+          className="fixed bottom-20 right-5 z-50 w-80 max-w-sm bg-card rounded-xl shadow-xl flex flex-col"
           style={{ height: "420px" }}
         >
           <div className="bg-primary text-primary-foreground p-3 rounded-t-xl flex justify-between items-center shrink-0">
@@ -124,3 +124,4 @@ export const Chatbot = () => {
     </>
   );
 };
+

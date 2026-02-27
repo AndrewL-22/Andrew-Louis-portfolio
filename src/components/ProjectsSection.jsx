@@ -37,7 +37,7 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="section-shell">
+    <section id="projects" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
           {" "}
@@ -53,7 +53,7 @@ export const ProjectsSection = () => {
           {projects.map((project, key) => (
             <div
               key={key}
-              className="group glass-panel overflow-hidden card-hover"
+              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
             >
               <div className="h-48 overflow-hidden">
                 <img
@@ -112,3 +112,4 @@ export const ProjectsSection = () => {
     </section>
   );
 };
+
