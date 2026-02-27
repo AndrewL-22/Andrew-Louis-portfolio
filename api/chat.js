@@ -3,6 +3,9 @@ export default async function handler(req, res) {
 
   const { messages } = req.body;
 
+  // Filter out any empty messages and ensure alternating user/assistant roles
+  const filtered = messages.filter((m) => m.content && m.content.trim() !== "");
+
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
     {
@@ -12,7 +15,7 @@ export default async function handler(req, res) {
         systemInstruction: {
           parts: [{ text: "You are a helpful assistant on a personal portfolio website. Answer questions about the site owner's projects, skills, and experience concisely and helpfully." }]
         },
-        contents: messages.map((m) => ({
+        contents: filtered.map((m) => ({
           role: m.role === "assistant" ? "model" : "user",
           parts: [{ text: m.content }],
         })),
@@ -21,8 +24,6 @@ export default async function handler(req, res) {
   );
 
   const data = await response.json();
-
-  // Log the full response so we can see what Gemini is returning
   console.log("Gemini response:", JSON.stringify(data));
 
   if (!data.candidates || !data.candidates[0]) {

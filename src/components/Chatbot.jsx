@@ -27,10 +27,12 @@ export const Chatbot = () => {
     const apiMessages = messages
       .concat({ from: "user", text: userText })
       .filter((m) => m.from === "user" || m.from === "bot")
+      .filter((m) => m.text && m.text.trim() !== "")
       .map((m) => ({
         role: m.from === "user" ? "user" : "assistant",
         content: m.text,
-      }));
+      }))
+      .filter((_, i, arr) => !(i === 0 && arr[0].role === "assistant"));
 
     try {
       const res = await fetch("/api/chat", {
