@@ -3,11 +3,13 @@ export default async function handler(req, res) {
 
   const { messages } = req.body;
 
-  // Filter out any empty messages and ensure alternating user/assistant roles
-  const filtered = messages.filter((m) => m.content && m.content.trim() !== "");
+  const filtered = messages
+    .filter((m) => m.content && m.content.trim() !== "")
+    .filter((_, i, arr) => !(i === 0 && arr[0].role === "assistant"));
 
   const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,    {
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+    {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
