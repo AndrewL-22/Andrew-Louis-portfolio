@@ -2,8 +2,7 @@ import { Briefcase, Code, User } from "lucide-react";
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-24 px-4 relative">
-      {" "}
+    <section id="about" className="section-shell">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
           About <span className="text-primary"> Me</span>
@@ -54,7 +53,7 @@ export const AboutSection = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
+            <div className="gradient-border p-6 card-hover glass-panel">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Code className="h-6 w-6 text-primary" />
@@ -69,7 +68,7 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <div className="gradient-border p-6 card-hover">
+            <div className="gradient-border p-6 card-hover glass-panel">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <Briefcase className="h-6 w-6 text-primary" />
@@ -84,7 +83,7 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            <div className="gradient-border p-6 card-hover">
+            <div className="gradient-border p-6 card-hover glass-panel">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
                   <User className="h-6 w-6 text-primary" />
