@@ -21,5 +21,13 @@ export default async function handler(req, res) {
   );
 
   const data = await response.json();
+
+  // Log the full response so we can see what Gemini is returning
+  console.log("Gemini response:", JSON.stringify(data));
+
+  if (!data.candidates || !data.candidates[0]) {
+    return res.status(500).json({ error: "Gemini error", details: data });
+  }
+
   res.status(200).json({ reply: data.candidates[0].content.parts[0].text });
 }
